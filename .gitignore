@@ -6,6 +6,7 @@
 /storage/debugbar
 /public/displays/*/editor
 /src/*/public/editor
+/public
 /vendor
 /.idea
 Homestead.json
