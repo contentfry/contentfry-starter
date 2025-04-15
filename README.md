@@ -12,8 +12,8 @@ Use these examples to:
 
 | Example                   | Framework     | Demo |
 |--------------------------|---------------|------|
-| Next Social Wall         | Next.js       | [next-social-wall.examples.contentfry.com](https://next-social-wall.examples.contentfry.com) |
-| React Social Wall UI     | Vite + React  | [examples.contentfry.com/react-social-wall](https://examples.contentfry.com/vite-social-wall) |
+| Next Social Wall         | Next.js       | [next-social-wall.starter.contentfry.com](https://next-social-wall.starter.contentfry.com) |
+| React Social Wall UI     | Vite + React  | [starter.contentfry.com/react-social-wall](https://starter.contentfry.com/vite-social-wall) |
 
 ---
 
