@@ -46,10 +46,12 @@ interface SocialWallProps {
   }
 }
 
+
 export default function SocialWall({ initialData }: SocialWallProps) {
   
-  const params = new URLSearchParams(window.location.search);
-  const [feedUrl, setFeedUrl] = useState(params.get('feedUrl') || 'https://feed.contentfry.com/cats')
+  const defaultFeedUrl =  'https://feed.contentfry.com/' + (['cats', 'auto', 'demo'][Math.floor(Math.random() * 3)])
+  const params = new URLSearchParams(window.location.search);  
+  const [feedUrl, setFeedUrl] = useState(params.get('feedUrl') || defaultFeedUrl)
   const [data, setData] = useState(initialData)
   const [loading, setLoading] = useState(!initialData)
   const [error, setError] = useState<string | null>(null)

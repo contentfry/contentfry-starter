@@ -8,13 +8,15 @@ async function getSocialData(feedUrl: string) {
   return res.json();
 }
 
+
 export default async function Page({
   searchParams,
 }: {
   searchParams: Promise<{ feedUrl?: string }>;
 }) {
+  const defaultFeedUrl =  'https://feed.contentfry.com/' + (['cats', 'auto', 'demo'][Math.floor(Math.random() * 3)])
   const resolvedParams = await searchParams;
-  const feedUrl = resolvedParams.feedUrl || "https://feed.contentfry.com/cats";
+  const feedUrl = resolvedParams.feedUrl || defaultFeedUrl;
   const socialData = await getSocialData(feedUrl);
 
   return (
