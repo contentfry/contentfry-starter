@@ -43,11 +43,6 @@ interface Post {
 interface SocialWallProps {
   feedUrl: string
   initialData?: {
-    meta: {
-      code: number
-      total: number
-      took: number
-    }
     data: Post[]
     pagination: {
       next_offset: number
@@ -91,7 +86,6 @@ export default function SocialWall({ initialData, feedUrl: initialFeedUrl }: Soc
     setData({data: [], pagination: {next_offset: 0, total: 0, next_url: ""}})
     handleLoadMore(feedUrl)
   }
-
   const handleLoadMore = async (url: string) => {
     if (!url) {
       return
@@ -99,14 +93,22 @@ export default function SocialWall({ initialData, feedUrl: initialFeedUrl }: Soc
     try {
       const response = await axios.get(url);
       const newData = response.data;
-      setData(prevData => ({
+      setData(prevData => {
+        if (!prevData) {
+          return {
+            data: newData.data,
+            pagination: newData.pagination
+          };
+        }
+        return {
           ...prevData,
           data: [...prevData.data, ...newData.data],
           pagination: newData.pagination
-        }));
-      } catch (error) {
-        console.error('Failed to fetch more posts:', error);
-      }
+        };
+      });
+    } catch (error) {
+      console.error('Failed to fetch more posts:', error);
+    }
   }
 
   return (
