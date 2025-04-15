@@ -175,7 +175,7 @@ export default function SocialWall({ initialData }: SocialWallProps) {
               <div className="relative aspect-square" style={{backgroundColor: post.color ? `hsl(${post.color.h}, ${post.color.s}%, ${post.color.l}%)` : 'transparent'}}>
                 <img
                   src={post.image || "/placeholder.svg"}
-                  alt={post.description.split("#")[0] || "Instagram post"}
+                  alt={post.description?.split("#")[0] || "Instagram post"}
                   className="object-cover w-full h-full"
                   onError={(e) => {
                     e.currentTarget.style.display = 'none'
@@ -188,7 +188,7 @@ export default function SocialWall({ initialData }: SocialWallProps) {
               <div className="text-base">
                 <p className="line-clamp-2">
                   {post.user_name && <span className="font-semibold mr-1">{post.user_name}</span>}
-                  {post.description.split("#")[0]}
+                  {post.description?.split("#")[0]}
                 </p>
                 <div className="mt-1 text-sm text-muted-foreground">
                   {formatDistanceToNow(new Date(post.posted_at), { addSuffix: true })}
