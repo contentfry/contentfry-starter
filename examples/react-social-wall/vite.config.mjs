@@ -11,7 +11,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "",
+  base: process.env.NODE_ENV === 'production' ? "/" + process.env.npm_package_name : "/",
   build : {
     emptyOutDir: true,
     outDir : "./../../public/" + process.env.npm_package_name
