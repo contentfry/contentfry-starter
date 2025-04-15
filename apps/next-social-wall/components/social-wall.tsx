@@ -54,7 +54,7 @@ interface SocialWallProps {
 
 export default function SocialWall({ initialData, feedUrl: initialFeedUrl }: SocialWallProps) {
   const [feedUrl, setFeedUrl] = useState(initialFeedUrl)  
-  const [data, setData] = useState(initialData)
+  const [payload, setPayload] = useState(initialData)
   const [loading, setLoading] = useState(!initialData)
   const [error, setError] = useState<string | null>(null)
 
@@ -72,18 +72,10 @@ export default function SocialWall({ initialData, feedUrl: initialFeedUrl }: Soc
     )
   }
 
-  if (error || !data) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[400px] p-4 text-center">
-        <h3 className="text-xl font-semibold mb-2">Unable to load posts</h3>
-        <p className="text-muted-foreground">{error || "No data available"}</p>
-      </div>
-    )
-  }
 
   const handleFeedChange = () => {
     setFeedUrl(feedUrl)
-    setData({data: [], pagination: {next_offset: 0, total: 0, next_url: ""}})
+    setPayload({data: [], pagination: {next_offset: 0, total: 0, next_url: ""}})
     handleLoadMore(feedUrl)
   }
   const handleLoadMore = async (url: string) => {
@@ -93,7 +85,7 @@ export default function SocialWall({ initialData, feedUrl: initialFeedUrl }: Soc
     try {
       const response = await axios.get(url);
       const newData = response.data;
-      setData(prevData => {
+      setPayload(prevData => {
         if (!prevData) {
           return {
             data: newData.data,
@@ -145,8 +137,12 @@ export default function SocialWall({ initialData, feedUrl: initialFeedUrl }: Soc
         </div>
       </div>
 
+      {!loading && payload?.data?.length === 0 && (
+          <div className="text-red-500">Failed to fetch feed</div>
+      )}
+      
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {data.data.map((post) => (
+        {payload?.data?.map((post) => (
           <Card key={post.id} className="overflow-hidden py-4 gap-2">
             <CardHeader className="space-y-0">
               <div className="flex items-center justify-between">
@@ -227,11 +223,11 @@ export default function SocialWall({ initialData, feedUrl: initialFeedUrl }: Soc
         ))}
       </div>
 
-      {data.pagination && data.pagination.next_url && (
+       {payload.pagination && payload.pagination.next_url && (
         <div className="flex justify-center mt-8">
           <Button 
             variant="outline" 
-            onClick={() => handleLoadMore(data.pagination.next_url)}
+            onClick={() => handleLoadMore(payload.pagination.next_url)}
           >
             Load More
           </Button>

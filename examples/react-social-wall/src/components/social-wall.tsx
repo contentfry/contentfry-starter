@@ -52,14 +52,14 @@ export default function SocialWall({ initialData }: SocialWallProps) {
   const defaultFeedUrl =  'https://feed.contentfry.com/' + (['cats', 'auto', 'demo'][Math.floor(Math.random() * 3)])
   const params = new URLSearchParams(window.location.search);  
   const [feedUrl, setFeedUrl] = useState(params.get('feedUrl') || defaultFeedUrl)
-  const [data, setData] = useState(initialData)
+  const [payload, setPayload] = useState(initialData)
   const [loading, setLoading] = useState(!initialData)
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState(null)
 
 
   const handleFeedChange = () => {
     setFeedUrl(feedUrl)
-    setData({data: [], pagination: {next_offset: 0, total: 0, next_url: ""}})
+    setPayload({data: [], pagination: {next_offset: 0, total: 0, next_url: ""}})
     handleLoadMore(feedUrl)
     setLoading(false)
   }
@@ -71,7 +71,7 @@ export default function SocialWall({ initialData }: SocialWallProps) {
     try {
       const response = await axios.get(url);
       const newData = response.data;
-      setData(prevData => {
+      setPayload(prevData => {
         if (!prevData) {
           return {
             data: newData.data,
@@ -86,6 +86,7 @@ export default function SocialWall({ initialData }: SocialWallProps) {
         };
       });
       } catch (error) {
+        setError("Failed to fetch feed")
         console.error('Failed to fetch more posts:', error);
       }
   }
@@ -102,15 +103,6 @@ export default function SocialWall({ initialData }: SocialWallProps) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-      </div>
-    )
-  }
-
-  if (error || !data) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[400px] p-4 text-center">
-        <h3 className="text-xl font-semibold mb-2">Unable to load posts</h3>
-        <p className="text-muted-foreground">{error || "No data available"}</p>
       </div>
     )
   }
@@ -150,8 +142,11 @@ export default function SocialWall({ initialData }: SocialWallProps) {
         </div>
       </div>
 
+
+      {error && <div className="text-red-500">{error}</div> }
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {data.data.map((post, index) => (
+        {payload.data.map((post, index) => (
           <Card key={index} className="overflow-hidden py-4 gap-2">
             <CardHeader className="space-y-0">
               <div className="flex items-center justify-between">
@@ -229,11 +224,11 @@ export default function SocialWall({ initialData }: SocialWallProps) {
         ))}
       </div>
 
-      {data.pagination && data.pagination.next_url && (
+      {payload.pagination && payload.pagination.next_url && (
         <div className="flex justify-center mt-8">
           <Button 
             variant="outline" 
-            onClick={() => handleLoadMore(data.pagination.next_url)}
+            onClick={() => handleLoadMore(payload.pagination.next_url)}
           >
             Load More
           </Button>
