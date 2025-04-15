@@ -36,6 +36,6 @@ This app can be deployed to Vercel or any platform that supports Next.js. Update
 
 You can explore this example without installing locally by using one of these online development environments:
 
-[![Open in CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/embed/github/contentfry/contentfry-starter/tree/main/apps/next-social-wall?view=preview&theme=dark&codemirror=1)
-
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/contentfry/contentfry-starter/tree/main/apps/next-social-wall)
+
+[![Open in CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/embed/github/contentfry/contentfry-starter/tree/main/apps/next-social-wall?view=preview&theme=dark&codemirror=1)
