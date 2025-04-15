@@ -223,7 +223,7 @@ export default function SocialWall({ initialData, feedUrl: initialFeedUrl }: Soc
         ))}
       </div>
 
-       {payload.pagination && payload.pagination.next_url && (
+       {payload?.pagination && payload?.pagination?.next_url && (
         <div className="flex justify-center mt-8">
           <Button 
             variant="outline" 
