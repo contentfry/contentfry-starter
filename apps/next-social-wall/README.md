@@ -26,17 +26,16 @@ npm run dev
 
 The app will be available at `http://localhost:3000`.
 
-## Project Structure
-
-```
-/
-├── app/                  # App Router pages and layout
-├── components/           # Reusable UI components
-├── lib/                  # API helpers and feed handling
-├── styles/               # Tailwind CSS configuration and global styles
-└── next.config.js        # Next.js configuration
-```
 
 ## Deployment
 
 This app can be deployed to Vercel or any platform that supports Next.js. Update the feed URL in your code before deploying.
+
+
+## Try It Online
+
+You can explore this example without installing locally by using one of these online development environments:
+
+[![Open in CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/embed/github/contentfry/contentfry-starter/tree/main/apps/next-social-wall?view=preview&theme=dark&codemirror=1)
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/contentfry/contentfry-starter/tree/main/apps/next-social-wall)

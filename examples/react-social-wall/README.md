@@ -14,3 +14,23 @@ This example demonstrates how to integrate ContentFry's social wall feed into a 
 
 1. Install dependencies:
 
+```bash
+npm install
+```
+
+2. Start the development server:
+
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:5173`.
+
+
+## Try It Online
+
+You can explore this example without installing locally by using one of these online development environments:
+
+[![Open in CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/embed/github/contentfry/contentfry-starter/tree/main/examples/react-social-wall?view=preview&theme=dark&codemirror=1)
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/contentfry/contentfry-starter/tree/main/examples/react-social-wall)

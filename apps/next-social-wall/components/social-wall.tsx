@@ -175,6 +175,7 @@ export default function SocialWall({ initialData, feedUrl: initialFeedUrl }: Soc
                   alt={post.description?.split("#")[0] || "Instagram post"}
                   fill
                   className="object-cover"
+                  unoptimized={true}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   onError={(e) => {
                     e.currentTarget.style.display = 'none'
