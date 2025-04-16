@@ -2,14 +2,6 @@
 
 This example demonstrates how to integrate a Contentfry social wall feed into a Next.js 15 application. It uses modern tools to render a responsive, real-time feed of social media content.
 
-## Features
-
-- Real-time feed rendering from the Contentfry Feed API
-- Responsive design with Tailwind CSS
-- Accessible UI components built with Radix UI
-- Built with Next.js 15 and Turbopack
-- Written in TypeScript
-
 ## Getting Started
 
 1. Install dependencies:
