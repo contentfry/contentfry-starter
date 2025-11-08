@@ -16,10 +16,6 @@ The fastest way to get started is using the `create-contentfry-starter` CLI tool
 npm create contentfry-starter@latest -- --example react-social-wall
 ```
 
-Replace `react-social-wall` with any of the available examples:
-- `react-social-wall` - Vite + React social wall example
-- `next-social-wall` - Next.js social wall example
-
 Then navigate to your new project and start developing:
 
 ```bash
